@@ -7,12 +7,13 @@
    * of responsiveness which is a costly trade off.
    */
   angular.
-    module('collectionsBuilder.undo').
-    service('history', history);
+    module('undo').
+    service('history', history).
+    value('maxHistory', 100);
 
-  history.$inject = ['action'];
+  history.$inject = ['action', 'maxHistory'];
 
-  function history (action) {
+  function history (action, maxHistory) {
     var self = this;
     var undoStack = [];
     var redoStack = [];
@@ -85,6 +86,8 @@
     function transfer (from, to) {
       if (from.length === 0) {
         throw new Error('No actions left');
+      } else if (to.length > maxHistory) {
+        to.shift()
       }
 
       var actionable = from.pop();

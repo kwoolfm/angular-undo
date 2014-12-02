@@ -3,7 +3,7 @@
 # Undo is equivalent to Inverse
 #
 describe "Action Factory Specification", ->
-  beforeEach module "collectionsBuilder.undo"
+  beforeEach module "undo"
 
   [action, $q, routine, inverse, routineMessage, $rootScope, routineDeferral, inverseDeferral,
   inverseMessage] = [undefined]

@@ -14,7 +14,7 @@
  *    this.message, a human readable string to be displayed and set by the routine
  */
   angular.
-    module('collectionsBuilder.undo').
+    module('undo').
     factory('action', action);
 
   action.$inject = ['$q'];

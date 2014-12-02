@@ -1,6 +1,6 @@
 describe "History Service", ->
   [history, action, undo, redo, actionStub] = [undefined]
-  beforeEach module "collectionsBuilder.undo"
+  beforeEach module "undo"
 
   describe "is able to undo and redo actions.", ->
     beforeEach ->
