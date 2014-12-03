@@ -3,17 +3,8 @@
 
 ### a lightweight history for model and api changes
 
-
-|todo bookmarks|
-
 Angular undo gives the ability to undo/redo state changes in your angular app. It can affect local or remote state
 
-
-* todo code pen example
-
-
-
-bold: under active development
 
 ## Getting Started
 
@@ -79,10 +70,13 @@ function update (value) {
 
 ## Non-blocking vs. Correctness
 
-todo
 
-Resources
+## Resources
+[Slide deck](http://www.slideshare.net/kwoolfm/temporal-composability)
 
-videos 
+See also: 
+* [angular-undo-redo](https://github.com/bobey/angular-undo-redo) an Object Oriented approach
+* [chronology.js](https://github.com/wout/chronology.js) as a microjs library
 
-extras
+
+
