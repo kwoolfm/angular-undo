@@ -1,37 +1,61 @@
 #Angular Undo
 
 
-### a lightweight history for model/api changes
+### a lightweight history for model and api changes
 
 
-|todo|
+|todo bookmarks|
 
 Angular undo gives the ability to undo/redo state changes in your angular app. It can affect local or remote state
-
-Some use cases include: 
-
-* a <-> b local state changes. Changing the state of anything in the app
-* a <-> b PUT or PATCH. Changing a single field or a group of object properties in an API.
-* a -> !a POST and DELETE. Creating and deleting an object in an API
-
-
-
 
 
 * todo code pen example
 
-* todo travis CI for building
 
 
 bold: under active development
 
 ## Getting Started
 
-* Add as a bower dependency `npm install angular-undo-redo`
-* placeholder test
+* Bower install: `bower install angular-undo`
+* Import the module from your app.js `angular.module('undo', []);`
+* Add to your list of depencies `angular.module('<your module>', [..., 'undo']);`
 
 
-An example of using history
+## Examples
+* RESTful Endpoints. Create (POST) to a resource, undo (DELETE) with the ID that is returned
+* a <-> b PUT or PATCH. Changing a single field or a group of object properties in an API.
+* a <-> b local state changes. Changing the state of anything in the app
+
+### undo/redo API resource creation/deletion
+
+```javascript
+var url = 'www.example.com/resource';
+
+function create (name) {
+  $http.post(url);
+}
+
+// id is a promise injected by history
+function delete (id) {
+  id.then(function () {
+    $http.delete(url, id);
+  }
+}
+
+// invokes create
+history.add(create, delete);
+
+// invokes delete
+history.undo();
+
+// invokes create (new resource)
+history.redo();
+
+```
+
+### updating an API on change events
+
 
 ```javascript
 function onChange (prop) {
@@ -45,18 +69,13 @@ function update (value) {
     var data = {};
     data[prop] = value;
     
-    // Custom Angular Resource Patch
+    // Custom Angular Resource PATCH
     api.update(data);
   }
 }
 ```
 
-## Working with APIs
-todo
 
-## History as a double stack
-
-todo
 
 ## Non-blocking vs. Correctness
 

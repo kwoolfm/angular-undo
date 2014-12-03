@@ -1,0 +1,26 @@
+{
+  "name": "angular-undo",
+  "version": "0.0.1",
+  "homepage": "https://github.com/kwoolfm/angular-undo",
+  "authors": [
+    "Kevin Munns <kwoolfm@yahoo.com>"
+  ],
+  "description": "Undo Redo with API actions with angular.",
+  "main": "'src/history.js'",
+  "keywords": [
+    "angular",
+    "undo",
+    "redo",
+    "command"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "node_modules",
+    "bower_components",
+    "test",
+    "Gruntfile.js"
+  ],
+  "dependencies": {
+    "angular": "~1.3.5"
+  }
+}
