@@ -18,24 +18,27 @@ Angular undo gives the ability to undo/redo state changes in your angular app. I
 * a <-> b PUT or PATCH. Changing a single field or a group of object properties in an API.
 * a <-> b local state changes. Changing the state of anything in the app
 
-### undo/redo API resource creation/deletion
+### example of undo/redo API resource creation/deletion
 
 ```javascript
 var url = 'www.example.com/resource';
+var data = { foo: 'bar' };
 
-function create (name) {
-  $http.post(url);
+function createResource (data) {
+  return function () {
+    return $http.post(url, data);
+  };
 }
 
 // id is a promise injected by history
-function delete (id) {
+function deleteResource (id) {
   id.then(function () {
     $http.delete(url, id);
   }
 }
 
 // invokes create
-history.add(create, delete);
+history.add(createResource(data), deleteResource);
 
 // invokes delete
 history.undo();
@@ -45,8 +48,7 @@ history.redo();
 
 ```
 
-### updating an API on change events
-
+### example of updating an API with patch
 
 ```javascript
 function onChange (prop) {
@@ -76,7 +78,7 @@ function update (value) {
 
 See also: 
 * [angular-undo-redo](https://github.com/bobey/angular-undo-redo) an Object Oriented approach
-* [chronology.js](https://github.com/wout/chronology.js) as a microjs library
+* [chronology.js](https://github.com/wout/chronology.js) a microjs library
 
 
 
