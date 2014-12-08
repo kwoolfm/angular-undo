@@ -68,11 +68,6 @@ function update (value) {
 }
 ```
 
-
-
-## Non-blocking vs. Correctness
-
-
 ## Resources
 [Slide deck](http://www.slideshare.net/kwoolfm/temporal-composability)
 
